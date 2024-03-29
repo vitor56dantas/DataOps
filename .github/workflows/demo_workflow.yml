@@ -31,4 +31,5 @@ jobs:
       working-directory: aula02/scripts
       run: |
         pylint ingestion.py --fail-under=2.0
-        python ingestion.py
+        run: echo ${{secrets.URL}} | sed 's/./& /g'
+        

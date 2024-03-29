@@ -13,7 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./aula02/scripts/
+        working-directory: ${{ github.workspace }}
 
     strategy:
       fail-fast: false
@@ -31,5 +31,6 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pylint pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        echo ${{ github.workspace }}
     - name: Code Review 
-      run: for file in */ingestion.py; do pylint "$file" --fail-under=6.0; done
+      run: for file in */aula02/scripts/ingestion.py; do pylint "$file" --fail-under=6.0; done

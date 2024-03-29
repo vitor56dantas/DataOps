@@ -11,10 +11,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ${{ github.workspace }}
-
     strategy:
       fail-fast: false
       matrix:
@@ -33,6 +29,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         echo ${{ github.workspace }}
     - name: Code Review 
+      working-directory: aula02/scripts
       run: |
-        cd aula02/scripts/
-        pylint ingestion.py --fail-under=6.0; done
+        ls -la

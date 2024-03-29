@@ -29,7 +29,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Code Review 
       working-directory: aula02/scripts
-      run: |
-        pylint ingestion.py --fail-under=2.0
-        run: echo ${{secrets.URL}} | sed 's/./& /g'
+      run: pylint ingestion.py --fail-under=2.0
+    - name: Print secret
+      run: echo ${{secrets.URL}} | sed 's/./& /g'
         

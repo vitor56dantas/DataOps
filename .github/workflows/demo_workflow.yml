@@ -33,4 +33,6 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         echo ${{ github.workspace }}
     - name: Code Review 
-      run: for file in */aula02/scripts/ingestion.py; do pylint "$file" --fail-under=6.0; done
+      run: |
+        cd aula02/scripts/
+        pylint ingestion.py --fail-under=6.0; done

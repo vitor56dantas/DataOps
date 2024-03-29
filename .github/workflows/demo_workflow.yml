@@ -30,5 +30,4 @@ jobs:
         echo ${{ github.workspace }}
     - name: Code Review 
       working-directory: aula02/scripts
-      run: |
-        ls -la
+      run: do pylint ingestion.py --fail-under=6.0; done

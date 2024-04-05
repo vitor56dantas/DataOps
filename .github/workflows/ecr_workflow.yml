@@ -24,7 +24,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Build, Tag, and Push the Image to Amazon ECR
-      id: build-image
+      working-directory: python
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: aula-carol  # nome do repositório ECR

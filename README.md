@@ -1,21 +1,30 @@
 # de04_dataops
 
-Introdução
+Projeto disciplina de DataOps
 
-Aula 01
----
-objetivos:
-- dataops
-- workflow de projeto
-- apresentação ao projeto final
+
+## **Objetivos**:
+- Ciclo de vida de projeto de dados
+- Pipeline de dados
+- Ferramentas básicas em dataops
+
+
+![alt text](imgs/projeto_final.png)
 
 ```
 dataops04
 │   README.md
-│   .gitignore    
-│
-└───aula01
+│   .gitignore 
+│   .github/workflows
+|
+└───scripts
 │   │   ingestion.py
-│   │   exploracao.ipynb
+│   │   config.py
+│   │   utils.py
+│   │   metadado.xlsx
+|
+└────data
+|   │   └─── raw
+|   │   └─── work
 ```
 

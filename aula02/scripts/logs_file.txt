@@ -1,2 +1,0 @@
-stage;type;error;datetime
-read_api;ConnectionError;HTTPSConnectionPool(host='randomuserxxx.me', port=443): Max retries exceeded with url: /api/?results=5 (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x0000025E5D1EC810>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed'));2024-04-03 22:21:01.140489

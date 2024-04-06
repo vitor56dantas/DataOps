@@ -25,12 +25,7 @@ def ingestion():
     logging.info("Iniciando a ingestão")
     api_url = os.getenv('URL')
 
-    try:
-        response = requests.get(api_url, timeout=10).json()
-        data = response['results']
-    except Exception as exception_error:
-         utils.error_handler(exception_error, 'read_api')
-
+    response = requests.get(api_url, timeout=10).json()
     data = response['results']
     df = pd.json_normalize(data)
     df['load_date'] = datetime.now().strftime("%H:%M:%S")
@@ -52,9 +47,5 @@ def preparation(file):
     logging.info("Dados renomeados e selecionados")
     san.tipagem()
     logging.info("Dados tipados")
-    san.save_work()
-    logging.info("Dados salvos")
-
-if __name__ == '__main__':
-    file_name = ingestion()
-    preparation(file_name)
+    cols, values = san.save_work()
+    return values, cols

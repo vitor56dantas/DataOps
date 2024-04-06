@@ -161,3 +161,10 @@ cython_debug/
 
 .ipynb
 .csv
+*.csv
+
+/logs
+logs/
+
+/plugins
+plugins/

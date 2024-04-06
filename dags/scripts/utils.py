@@ -3,6 +3,9 @@ import os
 import re
 import pandas as pd
 from datetime import datetime
+import mysql.connector
+from sqlalchemy import create_engine 
+
 
 class Saneamento:
     
@@ -31,11 +34,11 @@ class Saneamento:
                 self.data[col] = pd.to_datetime(self.data[col]).dt.strftime('%Y-%m-%d')
     
     def save_work(self):
+
         self.data['load_date'] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-        if not os.path.exists(self.path_work):
-            self.data.to_csv(self.path_work, index=False, sep = ";")
-        else:
-            self.data.to_csv(self.path_work, index=False, mode='a', header=False, sep = ";")
+        values = tuple(list(tuple(self.data.values)[0]))
+        cols = '('+(' , '.join(self.data.columns.tolist()))+')'
+        return cols, values
 
 
 def error_handler(exception_error, stage):

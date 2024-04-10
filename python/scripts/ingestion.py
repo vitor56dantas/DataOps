@@ -31,7 +31,6 @@ def ingestion():
     except Exception as exception_error:
          utils.error_handler(exception_error, 'read_api')
 
-    data = response['results']
     df = pd.json_normalize(data)
     df['load_date'] = datetime.now().strftime("%H:%M:%S")
     file = f"{config_file['raw_path']}{str(uuid.uuid4())}.csv"

@@ -3,6 +3,8 @@ import os
 import re
 import pandas as pd
 from datetime import datetime
+import mysql.connector
+from sqlalchemy import create_engine   
 
 class Saneamento:
     
@@ -32,10 +34,15 @@ class Saneamento:
     
     def save_work(self):
         self.data['load_date'] = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-        if not os.path.exists(self.path_work):
-            self.data.to_csv(self.path_work, index=False, sep = ";")
-        else:
-            self.data.to_csv(self.path_work, index=False, mode='a', header=False, sep = ";")
+
+        con = mysql.connector.connect(
+            user='root', password='root', host='mysql', port="3306", database='db')
+        
+        print("DB connected")
+
+        engine  = create_engine("mysql+mysqlconnector://root:root@mysql/db")
+        self.data.to_sql('cadastro', con=engine, if_exists='append', index=False)
+        con.close()
 
 
 def error_handler(exception_error, stage):
